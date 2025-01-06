@@ -1,56 +1,74 @@
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.android)
+    alias(libs.plugins.kotlin)
+    alias(libs.plugins.compose)
+    alias(libs.plugins.serialization)
 }
 
 android {
-    namespace = "xyz.teamgravity.googlecredentialmanagerdemo"
-    compileSdk = 34
+    namespace = "xyz.teamgravity.googlecrendetialmanagerdemo"
+    compileSdk = libs.versions.sdk.compile.get().toInt()
 
     defaultConfig {
-        applicationId = "xyz.teamgravity.googlecredentialmanagerdemo"
-        minSdk = 26
-        targetSdk = 34
+        applicationId = "xyz.teamgravity.googlecrendetialmanagerdemo"
+        minSdk = libs.versions.sdk.min.get().toInt()
+        targetSdk = libs.versions.sdk.target.get().toInt()
         versionCode = 1
-        versionName = "1.0"
+        versionName = "1.0.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
-
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+        vectorDrawables {
+            useSupportLibrary = true
         }
     }
+
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
+
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = libs.versions.java.target.get()
     }
+
     buildFeatures {
         compose = true
+    }
+
+    packaging {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
     }
 }
 
 dependencies {
 
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.activity.compose)
-    implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.ui)
-    implementation(libs.androidx.ui.graphics)
-    implementation(libs.androidx.ui.tooling.preview)
-    implementation(libs.androidx.material3)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.ui.test.junit4)
-    debugImplementation(libs.androidx.ui.tooling)
-    debugImplementation(libs.androidx.ui.test.manifest)
+    // compose
+    implementation(platform(libs.compose))
+    implementation(libs.compose.ui)
+    implementation(libs.compose.graphics)
+    implementation(libs.compose.preview)
+    implementation(libs.compose.material3)
+
+    // compose activity
+    implementation(libs.compose.activity)
+
+    // compose lifecycle
+    implementation(libs.compose.lifecycle)
+
+    // compose viewmodel
+    implementation(libs.compose.viewmodel)
+
+    // compose navigation
+    implementation(libs.compose.navigation)
+
+    // core
+    implementation(libs.core)
+
+    // credentials
+    implementation(libs.credentials)
+    implementation(libs.credentials.compat)
+
+    // serialization
+    implementation(libs.serialization)
 }
