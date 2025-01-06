@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "xyz.teamgravity.googlecrendetialmanagerdemo"
+    namespace = "xyz.teamgravity.googlecredentialmanagerdemo"
     compileSdk = libs.versions.sdk.compile.get().toInt()
 
     defaultConfig {
-        applicationId = "xyz.teamgravity.googlecrendetialmanagerdemo"
+        applicationId = "xyz.teamgravity.googlecredentialmanagerdemo"
         minSdk = libs.versions.sdk.min.get().toInt()
         targetSdk = libs.versions.sdk.target.get().toInt()
         versionCode = 1

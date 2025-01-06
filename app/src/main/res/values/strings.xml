@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">GoogleCredentialManagerDemo</string>
+
+    <!-- Authentication -->
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+
+    <!-- Home -->
+    <string name="your_username">Username: %1$s</string>
+    <string name="your_password">Password: %1$s</string>
 </resources>
